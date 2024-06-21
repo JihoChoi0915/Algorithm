@@ -1,20 +1,31 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int N = sc.nextInt();
-        int sum = 0;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+
+        int N = Integer.parseInt(br.readLine());
         int[] A = new int[N];
+        int count = 0;
+        StringTokenizer st = new StringTokenizer(br.readLine());
+
         for (int i = 0; i < N; i++) {
-            A[i] = sc.nextInt();
+            A[i] = Integer.parseInt(st.nextToken());
         }
-        int v = sc.nextInt();
+
+        int v = Integer.parseInt(br.readLine());
         for (int j = 0; j < A.length; j++) {
-            if(v == A[j]){
-                sum += 1;
+            if (A[j] == v) {
+                count++;
             }
         }
-        System.out.println(sum);
+
+        bw.write(String.valueOf(count) + "\n");
+
+        br.close();
+        bw.flush();
+        bw.close();
     }
 }
